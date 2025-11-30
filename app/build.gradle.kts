@@ -8,12 +8,12 @@ plugins {
 
 android {
     namespace = "com.example.a19100520pc02moviles"
-    compileSdk = 36 // Reverted to your project's original version
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.example.a19100520pc02moviles"
-        minSdk = 33 // Reverted to your project's original version
-        targetSdk = 36 // Reverted to your project's original version
+        minSdk = 24
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
@@ -30,17 +30,17 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11 // Reverted to your project's original version
-        targetCompatibility = JavaVersion.VERSION_11 // Reverted to your project's original version
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
     }
     kotlinOptions {
-        jvmTarget = "11" // Reverted to your project's original version
+        jvmTarget = "1.8"
     }
     buildFeatures {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.8" // Compatible with Kotlin 1.9.22
+        kotlinCompilerExtensionVersion = "1.5.8"
     }
     packaging {
         resources {
@@ -50,27 +50,28 @@ android {
 }
 
 dependencies {
-    // Versions aligned with your project's context and stable plugins
-    implementation(platform("androidx.compose:compose-bom:2024.09.00"))
-    androidTestImplementation(platform("androidx.compose:compose-bom:2024.09.00"))
+    // Using a stable Compose BOM compatible with Kotlin 1.9.22 and Hilt 2.50
+    val composeBom = platform("androidx.compose:compose-bom:2023.10.01")
+    implementation(composeBom)
+    androidTestImplementation(composeBom)
 
-    implementation("androidx.core:core-ktx:1.17.0")
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.10.0")
-    implementation("androidx.activity:activity-compose:1.12.0")
+    implementation("androidx.core:core-ktx:1.12.0")
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.2")
+    implementation("androidx.activity:activity-compose:1.8.1")
     implementation("androidx.compose.ui:ui")
     implementation("androidx.compose.ui:ui-graphics")
     implementation("androidx.compose.ui:ui-tooling-preview")
     implementation("androidx.compose.material3:material3")
-    implementation("androidx.navigation:navigation-compose:2.9.6")
+    implementation("androidx.navigation:navigation-compose:2.7.5")
 
     // Retrofit
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
 
-    // Hilt - Aligned to 2.48 to match plugin and project dependency
-    implementation("com.google.dagger:hilt-android:2.48")
-    ksp("com.google.dagger:hilt-compiler:2.48")
-    implementation("androidx.hilt:hilt-navigation-compose:1.2.0")
+    // Hilt - Updated to 2.50 to match the plugin version
+    implementation("com.google.dagger:hilt-android:2.50")
+    ksp("com.google.dagger:hilt-compiler:2.50")
+    implementation("androidx.hilt:hilt-navigation-compose:1.1.0")
 
     // Coil
     implementation("io.coil-kt:coil-compose:2.5.0")
