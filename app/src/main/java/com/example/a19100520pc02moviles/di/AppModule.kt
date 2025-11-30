@@ -1,6 +1,6 @@
 package com.example.a19100520pc02moviles.di
 
-import com.example.a19100520pc02moviles.data.remote.DeckOfCardsApi
+import com.example.a19100520pc02moviles.data.remote.DeckApi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -15,11 +15,11 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideDeckOfCardsApi(): DeckOfCardsApi {
+    fun provideDeckApi(): DeckApi {
         return Retrofit.Builder()
-            .baseUrl("https://deckofcardsapi.com/api/deck/")
+            .baseUrl("https://deckofcardsapi.com/api/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
-            .create(DeckOfCardsApi::class.java)
+            .create(DeckApi::class.java)
     }
 }
